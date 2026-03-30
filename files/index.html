@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iron Dealer | AI-Powered Content & Automation for Equipment Dealers</title>
+  <meta name="description" content="Iron Dealer helps agricultural and construction equipment dealers grow with AI-powered content, automation, and dealer marketing tools.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --iron: #1a1a1a;
+      --steel: #2d2d2d;
+      --rust: #c45a2d;
+      --rust-light: #e07040;
+      --concrete: #f0ece4;
+      --concrete-dark: #d4cfc5;
+      --white: #fafaf8;
+      --text: #333;
+      --text-light: #666;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26,26,26,0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--white);
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+    .logo span { color: var(--rust); }
+    nav a.cta-nav {
+      background: var(--rust);
+      color: var(--white);
+      padding: 0.6rem 1.5rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background 0.3s;
+    }
+    nav a.cta-nav:hover { background: var(--rust-light); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--iron);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 60px,
+          rgba(255,255,255,0.02) 60px,
+          rgba(255,255,255,0.02) 61px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 60px,
+          rgba(255,255,255,0.02) 60px,
+          rgba(255,255,255,0.02) 61px
+        );
+    }
+    .hero-content {
+      position: relative;
+      max-width: 900px;
+      padding: 6rem 3rem 4rem;
+    }
+    .hero-tag {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      color: var(--rust);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.3s forwards;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: var(--white);
+      line-height: 0.95;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s forwards;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--rust);
+    }
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--concrete-dark);
+      line-height: 1.6;
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.7s forwards;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: var(--rust);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.9s forwards;
+    }
+    .hero-cta:hover {
+      background: var(--rust-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(196,90,45,0.3);
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--steel);
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--rust);
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--concrete-dark);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* SECTIONS */
+    section { padding: 5rem 3rem; }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--iron);
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+    .section-title span { color: var(--rust); }
+    .section-sub {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      max-width: 600px;
+      line-height: 1.6;
+      margin-bottom: 3rem;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+    }
+    .service-card {
+      background: var(--concrete);
+      padding: 2.5rem 2rem;
+      border-left: 4px solid var(--rust);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .service-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      color: var(--iron);
+      margin-bottom: 0.75rem;
+    }
+    .service-card p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* WHY SECTION */
+    .why-section {
+      background: var(--iron);
+      color: var(--white);
+    }
+    .why-section .section-title { color: var(--white); }
+    .why-section .section-sub { color: var(--concrete-dark); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+    }
+    .why-item {
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+    }
+    .why-item h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      color: var(--rust);
+      margin-bottom: 0.75rem;
+      letter-spacing: 1px;
+    }
+    .why-item p {
+      font-size: 0.95rem;
+      color: var(--concrete-dark);
+      line-height: 1.6;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: var(--rust);
+      text-align: center;
+      padding: 5rem 3rem;
+    }
+    .cta-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--white);
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+    .cta-section p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-button {
+      display: inline-block;
+      background: var(--iron);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+    .cta-button:hover {
+      background: var(--steel);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--iron);
+      padding: 2.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    footer .logo { font-size: 1.4rem; }
+    footer p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+    footer a {
+      color: var(--rust);
+      text-decoration: none;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero-content { padding: 5rem 1.5rem 3rem; }
+      section { padding: 3rem 1.5rem; }
+      .stats-bar { gap: 2rem; padding: 2rem 1.5rem; }
+      nav { padding: 0.8rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="logo">IRON<span>DEALER</span></a>
+    <a href="#contact" class="cta-nav">Get Started</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">AI-Powered Dealer Growth</div>
+      <h1>Your Dealership<br>Deserves <em>Better Content</em></h1>
+      <p>We help agricultural and construction equipment dealers cut through the noise with AI-driven content, automation, and marketing tools built by someone who's spent 30 years in the iron.</p>
+      <a href="#contact" class="hero-cta">Book a Demo</a>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-number">30+</div>
+      <div class="stat-label">Years in Equipment</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">50+</div>
+      <div class="stat-label">Dealers Supported</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">5X</div>
+      <div class="stat-label">Content Output</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Built for Dealers</div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="section-title">What We <span>Build</span> For You</div>
+    <p class="section-sub">Stop wrestling with marketing. We give you the content engine, automation, and tools that let you focus on selling iron.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">⚙️</div>
+        <h3>AI Content Engine</h3>
+        <p>One product input becomes LinkedIn posts, Facebook ads, dealer emails, video scripts, and more — all in your brand voice, tuned for equipment buyers.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📧</div>
+        <h3>Dealer Newsletters</h3>
+        <p>Ready-to-send email campaigns that showcase your inventory, educate buyers, and keep your dealership top of mind through every season.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <h3>Missed Call AI</h3>
+        <p>Never lose a lead again. Our AI answers missed calls, books appointments, and follows up — so your service bay and sales floor stay full.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Dealer CRM</h3>
+        <p>Purpose-built CRM for equipment dealers with finance calculators, pipeline tracking, and follow-up automation tuned for long sales cycles.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-section">
+    <div class="section-title">Why <span>Iron Dealer</span></div>
+    <p class="section-sub">We're not a generic marketing agency. We come from the dealer world and build tools that actually make sense for equipment sales.</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <h3>Industry Native</h3>
+        <p>Three decades in ag and construction equipment. We speak your language — from compact loaders to combine headers — because we've sold them.</p>
+      </div>
+      <div class="why-item">
+        <h3>AI That Gets It</h3>
+        <p>Our AI tools are trained on equipment industry context. No generic marketing fluff — just content that sounds like it was written by someone who knows a skid steer from a telehandler.</p>
+      </div>
+      <div class="why-item">
+        <h3>Canadian Built</h3>
+        <p>Headquartered in Manitoba and focused on Canadian dealers. We understand the seasons, the markets, and the relationships that drive this business.</p>
+      </div>
+      <div class="why-item">
+        <h3>Done For You</h3>
+        <p>You don't need another tool to learn. We set it up, we run it, and we deliver content that's ready to post, send, or publish.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" id="contact">
+    <h2>Ready to Sell More Iron?</h2>
+    <p>Book a quick call and we'll show you exactly how Iron Dealer can transform your dealership's marketing.</p>
+    <a href="mailto:martin@irondealer.ca" class="cta-button">Let's Talk</a>
+  </section>
+
+  <footer>
+    <a href="#" class="logo">IRON<span>DEALER</span></a>
+    <p>&copy; 2026 Iron Dealer &middot; Built in Manitoba &middot; <a href="mailto:martin@irondealer.ca">Contact</a></p>
+  </footer>
+
+</body>
+</html>
